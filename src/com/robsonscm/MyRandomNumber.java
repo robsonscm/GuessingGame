@@ -56,6 +56,14 @@ public final class MyRandomNumber extends RandomNumber {
                 return false;
             }
         }
+        
+        return false;
+    }
+    
+    @Override
+    public int generateRandomNumber() {
+        currentRandomNumber = random.nextInt(this.maximum) + this.minimum;
+        return currentRandomNumber;
     }
     
 }
