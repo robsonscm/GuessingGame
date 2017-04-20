@@ -126,24 +126,41 @@ public class Game {
     
                 System.out.println("Type your guess: ");
                 System.out.print("> ");
-                
+    
+                short guess = 0;
                 input = inOption.next();
                 if (input.equals("n") || input.equals("N")) {
-                    System.out.println("Thank you for playing!");
                     break;
                 } else {
-                    short guess = Short.parseShort(input);
+                    guess = Short.parseShort(input);
                     right = (inNumber == guess);
                 }
                 
                 if (!right) {
-//                    clearScreen();
-                    System.out.println("Wrong!!!! Try again.");;
+                    clearScreen();
+                    System.out.println(this.checkNumber(inNumber, guess));
                 }
     
             } catch (NumberFormatException | InputMismatchException e) {
                 System.out.println(input + " was not valid input. Try again. ");
             }
         }
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Thank you for playing!");
+        System.out.println("The Magic number was ".concat(Integer.toString(rNumber.currentRandomNumber)));
+    }
+    
+    private String checkNumber(short num, short bet) {
+        
+        float perc = (float) bet/num;
+        return (perc > 1)
+            ?
+            ((perc-1 < 0.33f) ? "So close! A little bit down!" :
+                (perc-1 < 0.66f) ? "Almost there! Guess a lower number." :
+                    "Too high!! Try miles below it!!!!")
+            :
+            (perc < 0.33f) ? "Too low!! Try miles above it!!!!!" :
+                    (perc < 0.66f) ? "Almost there! Guess a larger number." :
+                        "So close! A little bit up!";
     }
 }

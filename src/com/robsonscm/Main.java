@@ -8,19 +8,17 @@ public class Main {
 
         short userChoice;
         Game game = new Game();
-        Scanner input = new Scanner(System.in);
-
         do {
             
             userChoice = game.DisplayMenu();
             System.out.println(userChoice);
             
             if (userChoice != 0) {
-//                game.clearScreen();
                 game.PlayGame(userChoice);
             }
-            
-            System.out.println("Total guesses till final answer: ".concat(Integer.toString(game.totalGuesses)));
+    
+            System.out.println("You guessed ".concat(Integer.toString(game.totalGuesses).concat(" time(s) to find it out!")));
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         } while (userChoice != 0);
     
