@@ -145,6 +145,7 @@ public class Game {
                 System.out.println(input + " was not valid input. Try again. ");
             }
         }
+        System.out.println();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Thank you for playing!");
         System.out.println("The Magic number was ".concat(Integer.toString(rNumber.currentRandomNumber)));
