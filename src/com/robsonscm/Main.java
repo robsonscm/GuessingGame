@@ -16,12 +16,13 @@ public class Main {
             System.out.println(userChoice);
             
             if (userChoice != 0) {
+//                game.clearScreen();
                 game.PlayGame(userChoice);
             }
+            
+            System.out.println("Total guesses till final answer: ".concat(Integer.toString(game.totalGuesses)));
 
-        } while (userChoice != 0 /*||
-                 Objects.equals(input.next(), "n") ||
-                 Objects.equals(input.next(), "N")*/);
+        } while (userChoice != 0);
     
         
     }

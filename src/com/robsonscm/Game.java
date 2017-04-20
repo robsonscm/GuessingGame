@@ -19,10 +19,10 @@ public class Game {
     public short DisplayMenu() {
     
         boolean done = false;
-        int selection = 100;
+        int selection = -1;
         Scanner inOption = new Scanner(System.in);
 
-        clearScreen();
+//        clearScreen();
         System.out.println("#####################################################");
         System.out.println("#        ***  Choose from these choices   ***       #");
         System.out.println("#####################################################");
@@ -34,6 +34,7 @@ public class Game {
         System.out.println("#---------------------------------------------------#");
         System.out.println("#  0 - Exit                                         #");
         System.out.println("#####################################################");
+        System.out.print("> ");
     
         while (!done) {
             try {
@@ -46,7 +47,9 @@ public class Game {
                 }
                 
             } catch (InputMismatchException e) {
+                selection = 0;
                 System.err.println(inOption.next() + " was not valid input. Try again: ");
+                done = inOption.next().equals("n") || inOption.next().equals("N");
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
@@ -112,20 +115,29 @@ public class Game {
         boolean right = false;
     
         Scanner inOption = new Scanner(System.in);
-
+    
+        System.out.println("#####################################################");
+        System.out.println("#     ***  To leave the game press n or N   ***     #");
+        System.out.println("#####################################################");
+        
         while (!right) {
             try {
                 this.totalGuesses++;
     
                 System.out.println("Type your guess: ");
                 System.out.print("> ");
+                
                 input = inOption.next();
-
-                short guess = Short.parseShort(input);
-                right = (inNumber == guess);
+                if (input.equals("n") || input.equals("N")) {
+                    System.out.println("Thank you for playing!");
+                    break;
+                } else {
+                    short guess = Short.parseShort(input);
+                    right = (inNumber == guess);
+                }
                 
                 if (!right) {
-                    clearScreen();
+//                    clearScreen();
                     System.out.println("Wrong!!!! Try again.");;
                 }
     
