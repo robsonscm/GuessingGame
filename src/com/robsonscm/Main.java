@@ -21,10 +21,10 @@ public class Main {
                 System.out.println("You guessed ".concat(Integer.toString(game.totalGuesses).concat(" time(s) to find it out!")));
                 System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 System.out.println();
-                System.out.println("#####################################################");
-                System.out.println("#     To leave the game press n and then ENTER      #");
-                System.out.println("#            or just ENTER to Play Again            #");
-                System.out.println("#####################################################");
+                System.out.println("╔═══════════════════════════════════════════════════╗");
+                System.out.println("║     To leave the game press n and then ENTER      ║");
+                System.out.println("║            or just ENTER to Play Again            ║");
+                System.out.println("╚═══════════════════════════════════════════════════╝");
                 input = inOption.nextLine();
                 
                 if (input.equals("n") || input.equals("N")) {

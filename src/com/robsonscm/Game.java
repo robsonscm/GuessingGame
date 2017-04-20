@@ -22,18 +22,17 @@ public class Game {
         int selection = -1;
         Scanner inOption = new Scanner(System.in);
 
-//        clearScreen();
-        System.out.println("#####################################################");
-        System.out.println("#        ***  Choose from these choices   ***       #");
-        System.out.println("#####################################################");
-        System.out.println("#  1 - Easy  : Guess a number between 1 and 20      #");
-        System.out.println("#---------------------------------------------------#");
-        System.out.println("#  2 - Normal: Guess a number between 1 and 100     #");
-        System.out.println("#---------------------------------------------------#");
-        System.out.println("#  3 - Hard  : Guess a number between 1 and 1000    #");
-        System.out.println("#---------------------------------------------------#");
-        System.out.println("#  0 - Exit                                         #");
-        System.out.println("#####################################################");
+        System.out.println("╔═══════════════════════════════════════════════════╗");
+        System.out.println("║        ***  Choose from these choices   ***       ║");
+        System.out.println("╠═════╦═════════════════════════════════════════════╣");
+        System.out.println("║  1  ║ Easy  : Guess a number between 1 and 20     ║");
+        System.out.println("╠═════╬═════════════════════════════════════════════╣");
+        System.out.println("║  2  ║ Normal: Guess a number between 1 and 100    ║");
+        System.out.println("╠═════╬═════════════════════════════════════════════╣");
+        System.out.println("║  3  ║ Hard  : Guess a number between 1 and 1000   ║");
+        System.out.println("╠═════╬═════════════════════════════════════════════╣");
+        System.out.println("║  0  ║ Exit                                        ║");
+        System.out.println("╚═════╩═════════════════════════════════════════════╝");
         System.out.print("> ");
     
         while (!done) {
@@ -116,9 +115,9 @@ public class Game {
     
         Scanner inOption = new Scanner(System.in);
     
-        System.out.println("#####################################################");
-        System.out.println("#     ***  To leave the game press n or N   ***     #");
-        System.out.println("#####################################################");
+        System.out.println("╔═══════════════════════════════════════════════════╗");
+        System.out.println("║     ***  To leave the game press n or N    ***    ║");
+        System.out.println("╚═══════════════════════════════════════════════════╝");
         
         while (!right) {
             try {
