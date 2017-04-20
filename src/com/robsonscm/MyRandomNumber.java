@@ -6,62 +6,44 @@ public final class MyRandomNumber extends RandomNumber {
     
     protected int minimum; // this field represents the lowest number the random object should create
     protected int maximum; // this field represents the highest number the random object should create
-    protected int[] possibleMax = {20,100,1000};
     
     
     public MyRandomNumber() {
-        currentRandomNumber = 0;
-        random = new Random();
+        this.SetMinimum(1);
+        this.SetMaximum(10);
     }
     
-    public MyRandomNumber(Random number) {
-        currentRandomNumber = 0;
-        random = number;
+    public MyRandomNumber(int min, int max) {
+        this.SetMinimum(min);
+        this.SetMaximum(max);
     }
     
     //getters
-    public int getMinimum() {return this.minimum;}
-    public int getMaximum() {return this.maximum;}
+    public int GetMinimum() {return this.minimum;}
+    public int GetMaximum() {return this.maximum;}
 
     //setters
-    public boolean setMinimum(int num) {
-        if (num != 1) {
-            this.minimum = 1;
-            return false;
-        }
-        this.minimum = num;
-        return true;
+    public void SetMinimum(int min) {
+        this.minimum = min;
     }
     
-    public boolean setMaximum(int num) {
-    
-        Arrays.sort(possibleMax);
-
-        for (int n : possibleMax )
-        {
-            if (n == num)
-            {
-                this.maximum = num;
-                return true;
-            }
-        }
-    
-        System.out.println(possibleMax);
-        
-        for (int max : possibleMax )
-        {
-            if (num <= max)
-            {
-                this.maximum = max;
-                return false;
-            }
-        }
-        
-        return false;
+    public void SetMaximum(int max) {
+        this.maximum = max;
     }
     
     @Override
     public int generateRandomNumber() {
+        
+        if (this.minimum == this.maximum) {
+            return this.minimum;
+        }
+        
+        if (this.minimum > this.maximum) {
+            int temp = this.maximum;
+            this.maximum = this.minimum;
+            this.minimum = temp;
+        }
+        
         currentRandomNumber = random.nextInt(this.maximum) + this.minimum;
         return currentRandomNumber;
     }

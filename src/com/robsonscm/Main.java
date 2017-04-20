@@ -8,10 +8,21 @@ public class Main {
 
         short userChoice;
         Game game = new Game();
-        
         Scanner input = new Scanner(System.in);
-        userChoice = game.DisplayMenu();
+
+        do {
+            
+            userChoice = game.DisplayMenu();
+            System.out.println(userChoice);
+            
+            if (userChoice != 0) {
+                game.PlayGame(userChoice);
+            }
+
+        } while (userChoice != 0 /*||
+                 Objects.equals(input.next(), "n") ||
+                 Objects.equals(input.next(), "N")*/);
+    
         
-        System.out.println(userChoice);
     }
 }
