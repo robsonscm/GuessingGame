@@ -1,26 +1,41 @@
+/**********************************************************************************************************************
+ * ======================================================================
+ *  Game Class created for the the Project. Has all the game requirements
+ * ======================================================================
+ * Added by: Robson Miranda
+ * Date    : April 21, 2017
+ * Comments: Basically:
+ *           - display menu and check game mode selection
+ *           - clear screen (java doesn't handle very well it, so it adds
+ *             a bunch of lines and set return at the bottom of the page
+ *           - set up the game according with the mode selected
+ *           - do all the game logic and treatment
+ * ======================================================================
+ ***********************************************************************************************************************/
 package com.robsonscm;
 
 import java.util.*;
-import java.io.*;
 
 public class Game {
     
-    public int totalGuesses;
+    public int totalGuesses;         //variable to store user's total of guesses
     
-    private String input;
-    private MyRandomNumber rNumber;
+    private String input;            //variable to handle terminal input
+    private MyRandomNumber rNumber;  //variable to instance a new MyRandomNumber object
     
+    //Default Constructor
     public Game () {
-        this.totalGuesses = 0;
-        this.input = "";
-        this.rNumber = new MyRandomNumber();
+        this.totalGuesses = 0;                //start at 0 guesses
+        this.input = "";                      //start empty
+        this.rNumber = new MyRandomNumber();  //instance new object
     }
     
+    //Display main menu with game's modes
     public short DisplayMenu() {
     
-        boolean done = false;
-        int selection = -1;
-        Scanner inOption = new Scanner(System.in);
+        boolean done = false;                       //control appropriate options chosen
+        int selection = -1;                         //-1 represents beginning of the game
+        Scanner inOption = new Scanner(System.in);  //initiate input reading from terminal
         
         this.clearScreen();
         System.out.println("╔═══════════════════════════════════════════════════╗");
@@ -36,24 +51,27 @@ public class Game {
         System.out.println("╚═════╩═════════════════════════════════════════════╝");
         System.out.print("> ");
     
+        //while not a valid choice, keep looping
         while (!done) {
             try {
+                //read terminal input
                 selection = (inOption.nextInt());
-
+                //check if it is a valid option
                 done = (selection >= 0 && selection <= 3);
-                
+                //if not ok, throw controlled exception
                 if (!done) {
                     throw new Exception("Please enter 0, 1, 2 or 3: ");
                 }
-                
             } catch (InputMismatchException e) {
+                //in case of not typing a digit, give err message and ask new guess
                 selection = 0;
                 System.err.println(inOption.next() + " was not valid input. Try again: ");
             } catch (Exception e) {
+                //handle controlled exception
                 System.err.println(e.getMessage());
             }
         }
-        
+        //when having valid option, call GameSetup method with the chosen option
         return this.GameSetup( (short) selection);
     }
     
@@ -147,7 +165,7 @@ public class Game {
                 System.out.println(input + " was not valid input. Try again. ");
             }
         }
-        String myNumber = Integer.toString(rNumber.currentRandomNumber);
+        String myNumber = Integer.toString(rNumber.getCurrentRandomNumber());
         this.clearScreen();
         System.out.println();
         System.out.println("╔═══════════════════════════════════════════════════╗");
