@@ -14,17 +14,17 @@ public class Main {
         do {
             
             userChoice = game.DisplayMenu();
-            System.out.println(userChoice);
             
             if (userChoice != 0) {
+                game.clearScreen();
                 game.PlayGame(userChoice);
-                System.out.println("You guessed ".concat(Integer.toString(game.totalGuesses).concat(" time(s) to find it out!")));
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                System.out.println();
-                System.out.println("╔═══════════════════════════════════════════════════╗");
-                System.out.println("║     To leave the game press n and then ENTER      ║");
-                System.out.println("║            or just ENTER to Play Again            ║");
+                System.out.println("║     You guessed " + game.padLeftZeros(Integer.toString(game.totalGuesses),4) + " time(s) to find it out!      ║");
+                System.out.println("╠═══════════════════════════════════════════════════╣");
+                System.out.println("║             Do you wanna play again??             ║");
+                System.out.println("╠═══════════════════════════════════════════════════╣");
+                System.out.println("║       Press N to exit or ENTER to Play Again      ║");
                 System.out.println("╚═══════════════════════════════════════════════════╝");
+                System.out.print("> ");
                 input = inOption.nextLine();
                 
                 if (input.equals("n") || input.equals("N")) {
@@ -33,8 +33,14 @@ public class Main {
             }
 
         } while (userChoice != 0);
-        System.out.println("Thank you for playing!");
-        System.out.println("See ya!!");
+        
+        game.clearScreen();
+        System.out.println("╔═══════════════════════════════════════════════════╗");
+        System.out.println("║             Thank you for playing!                ║");
+        System.out.println("║                     See ya!!                      ║");
+        System.out.println("╚═══════════════════════════════════════════════════╝");
+        System.out.println();
+        System.out.println();
     
     }
 }

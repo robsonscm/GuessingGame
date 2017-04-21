@@ -21,7 +21,8 @@ public class Game {
         boolean done = false;
         int selection = -1;
         Scanner inOption = new Scanner(System.in);
-
+        
+        this.clearScreen();
         System.out.println("╔═══════════════════════════════════════════════════╗");
         System.out.println("║        ***  Choose from these choices   ***       ║");
         System.out.println("╠═════╦═════════════════════════════════════════════╣");
@@ -48,7 +49,6 @@ public class Game {
             } catch (InputMismatchException e) {
                 selection = 0;
                 System.err.println(inOption.next() + " was not valid input. Try again: ");
-                done = inOption.next().equals("n") || inOption.next().equals("N");
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
@@ -114,9 +114,10 @@ public class Game {
         boolean right = false;
     
         Scanner inOption = new Scanner(System.in);
-    
+        
+        this.clearScreen();
         System.out.println("╔═══════════════════════════════════════════════════╗");
-        System.out.println("║     ***  To leave the game press n or N    ***    ║");
+        System.out.println("║     ***  To leave the game press X   ***          ║");
         System.out.println("╚═══════════════════════════════════════════════════╝");
         
         while (!right) {
@@ -127,8 +128,8 @@ public class Game {
                 System.out.print("> ");
     
                 short guess = 0;
-                input = inOption.next();
-                if (input.equals("n") || input.equals("N")) {
+                input = inOption.nextLine();
+                if (input.equals("x") || input.equals("X")) {
                     break;
                 } else {
                     guess = Short.parseShort(input);
@@ -144,10 +145,12 @@ public class Game {
                 System.out.println(input + " was not valid input. Try again. ");
             }
         }
+        String myNumber = Integer.toString(rNumber.currentRandomNumber);
+        this.clearScreen();
         System.out.println();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("Thank you for playing!");
-        System.out.println("The Magic number was ".concat(Integer.toString(rNumber.currentRandomNumber)));
+        System.out.println("╔═══════════════════════════════════════════════════╗");
+        System.out.println("║             Thank you for playing!                ║");
+        System.out.println("║            The Magic number was " + padLeftZeros(myNumber, 4) + "              ║");
     }
     
     private String checkNumber(short num, short bet) {
@@ -162,5 +165,10 @@ public class Game {
             (perc < 0.33f) ? "Too low!! Try miles above it!!!!!" :
                     (perc < 0.66f) ? "Almost there! Guess a larger number." :
                         "So close! A little bit up!";
+    }
+    
+    public static String padLeftZeros(String str, int n) {
+        return String.format("%1$" + n + "s", str);
+        //.replace(' ', '0')
     }
 }
