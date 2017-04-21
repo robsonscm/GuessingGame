@@ -24,7 +24,7 @@ public class Game {
         
         this.clearScreen();
         System.out.println("╔═══════════════════════════════════════════════════╗");
-        System.out.println("║        ***  Choose from these choices   ***       ║");
+        System.out.println("║        ###  Choose from these choices   ###       ║");
         System.out.println("╠═════╦═════════════════════════════════════════════╣");
         System.out.println("║  1  ║ Easy  : Guess a number between 1 and 20     ║");
         System.out.println("╠═════╬═════════════════════════════════════════════╣");
@@ -117,7 +117,7 @@ public class Game {
         
         this.clearScreen();
         System.out.println("╔═══════════════════════════════════════════════════╗");
-        System.out.println("║     ***  To leave the game press X   ***          ║");
+        System.out.println("║       ###  To leave the game press X   ###        ║");
         System.out.println("╚═══════════════════════════════════════════════════╝");
         
         while (!right) {
@@ -138,7 +138,9 @@ public class Game {
                 
                 if (!right) {
                     clearScreen();
+                    System.out.println("╔═════════════════════════════════════════════════════════╗");
                     System.out.println(this.checkNumber(inNumber, guess));
+                    System.out.println("╚═════════════════════════════════════════════════════════╝");
                 }
     
             } catch (NumberFormatException | InputMismatchException e) {
@@ -158,13 +160,13 @@ public class Game {
         float perc = (float) bet/num;
         return (perc > 1)
             ?
-            ((perc-1 < 0.33f) ? "So close! A little bit down!" :
-                (perc-1 < 0.66f) ? "Almost there! Guess a lower number." :
-                    "Too high!! Try miles below it!!!!")
+            ((perc-1 < 0.33f) ? "║ =====>>>>  So close! A little bit down!                 ║" :
+             (perc-1 < 0.66f) ? "║ =====>>>>  Almost there! Guess a lower number.          ║" :
+                                "║ =====>>>>  Too high!! Try miles below it!!!!            ║")
             :
-            (perc < 0.33f) ? "Too low!! Try miles above it!!!!!" :
-                    (perc < 0.66f) ? "Almost there! Guess a larger number." :
-                        "So close! A little bit up!";
+             (perc   < 0.33f) ? "║ =====>>>>  So low!! Think Bigger!!!!!                   ║" :
+             (perc   < 0.66f) ? "║ =====>>>>  Half-way there. A larger number would work!! ║" :
+                                "║ =====>>>>  Getting Hot here! Guess a bit up!            ║";
     }
     
     public static String padLeftZeros(String str, int n) {
